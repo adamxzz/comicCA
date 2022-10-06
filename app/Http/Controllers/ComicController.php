@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ComicCollection;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        //
+        return new ComicCollection(Comic::all());
     }
 
     /**
