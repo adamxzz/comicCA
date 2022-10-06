@@ -17,7 +17,12 @@ class ComicFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->name()
+            'title' => fake()->name(),
+            'description' => fake()->text(),
+            'genre' => fake()->text(),
+            'author' => fake()->name(),
+            'illustrator' => fake()->name(),
+            'issues' => fake()->randomNumber(2),
         ];
     }
 }

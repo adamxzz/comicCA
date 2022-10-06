@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Comic;
-use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
-class ComicSeeder extends Seeder
+class AuthorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,6 +14,6 @@ class ComicSeeder extends Seeder
      */
     public function run()
     {
-       Comic::factory()->times(50)->create();
+        //
     }
 }
