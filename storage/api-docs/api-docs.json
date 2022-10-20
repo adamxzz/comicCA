@@ -1,0 +1,48 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Comic Book API",
+        "description": "AdamZ Comic Book API CA",
+        "contact": {
+            "email": "N00191010@iadt.ie"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "2.0.0"
+    },
+    "paths": {
+        "/api/comics": {
+            "get": {
+                "tags": [
+                    "Comics"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Displays all the comics",
+                "operationId": "98dc4ed0037dc558691bd498614669ec",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation, Returns a list of Comic in JSON format"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/": {
+            "get": {
+                "description": "Home Page",
+                "responses": {
+                    "default": {
+                        "description": "Welcome page"
+                    }
+                }
+            }
+        }
+    }
+}
