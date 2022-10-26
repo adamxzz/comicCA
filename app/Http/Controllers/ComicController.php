@@ -54,7 +54,11 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        //
+        $comic->update($request->only([
+            'title','description','genre','author','illustrator','issues'
+        ]));
+
+        return new ComicResource($comic);
     }
 
     /**
