@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ComicCollection;
+use App\Http\Resources\ComicResource;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,11 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comic = comic ::create($request->only([
+            'title','description','genre','author','illustrator','issues'
+        ]));
+
+        return new ComicResource($comic);
     }
 
     /**
@@ -37,7 +42,7 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        //
+        return new ComicResource($comic);
     }
 
     /**
