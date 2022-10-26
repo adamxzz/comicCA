@@ -6,6 +6,7 @@ use App\Http\Resources\ComicCollection;
 use App\Http\Resources\ComicResource;
 use App\Models\Comic;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ComicController extends Controller
 {
@@ -69,6 +70,7 @@ class ComicController extends Controller
      */
     public function destroy(Comic $comic)
     {
-        //
+        $comic->delete();
+        return response()->json(null, Response::HTTP_NO_CONTENT);
     }
 }
