@@ -5,6 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\ResourceCollection;
 
 class ComicCollection extends ResourceCollection
+//collection class helps with return more than one resource, ie: multiple comics
 {
     /**
      * Transform the resource collection into an array.

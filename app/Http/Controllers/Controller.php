@@ -7,6 +7,8 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 
+//the controller interacts with the model class to create data for the view
+//swagger stuff
  /**
  * @OA\Info(
  *      version="2.0.0",
@@ -23,7 +25,7 @@ use Illuminate\Routing\Controller as BaseController;
  * )
  * @OA\Get(
  *   path="/",
- *   description="HomePage",
+ *   description="HomePage"
  *   @OA\Response(response="default", description="Welcome page")
  * )
  */

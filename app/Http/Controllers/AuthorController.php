@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
+    //gets all authors function
     /**
     * @OA\Get(
  *     path="/api/authors",

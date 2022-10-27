@@ -5,6 +5,8 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ComicResource extends JsonResource
+//Resources are templates for youre data when you want to show how you want the JSON data
+// to be displayed to the user when they make an API request.
 {
     /**
      * Transform the resource into an array.

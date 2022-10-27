@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Comic extends Model
+//comic model class handles all the data used in a web application
 {
     use HasFactory;
     protected $fillable = ['title','description','genre','author','illustrator','issues'];

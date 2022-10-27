@@ -35,11 +35,12 @@ class ComicController extends Controller
      */
     public function index()
     {
+        //gets all of the comics from the JSON file
         return new ComicCollection(Comic::all());
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Stores a newly created resource in storage.
      *
      * @OA\Post(
      *      path="/api/comics",
@@ -72,6 +73,7 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
+    //this fumction stores the comic by asking prompts that need to be filled in order to get stored
     {
         $comic = comic ::create($request->only([
             'title','description','genre','author','illustrator','issues'
@@ -81,7 +83,7 @@ class ComicController extends Controller
     }
 
     /**
-     * Display the specified comic by said ID.
+     * Displays the specified comic by said ID.
      * @OA\Get(
     *     path="/api/comics/{id}",
     *     description="Gets a comic by ID",
@@ -110,7 +112,9 @@ class ComicController extends Controller
      * @param  \App\Models\Comic  $comic
      * @return \Illuminate\Http\Response
      */
+
     public function show(Comic $comic)
+    //grabs comic with an addtional request of an ID and shows that specific ID and all its contents
     {
         return new ComicResource($comic);
     }
@@ -123,6 +127,9 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Comic $comic)
+    //the update function uses the PUT and PATCH method to change the data 
+    //the PUT method sends the whole resource as a request if not it creates the whole resource if it does not exist (works similar to POST)  
+    //the PATCH method is for when you only need to send the data you're updating, but not the whole resource.  
     {
         $comic->update($request->only([
             'title','description','genre','author','illustrator','issues'
@@ -161,6 +168,7 @@ class ComicController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Comic $comic)
+    //the delete function, it deletes the comic by the ID and gets rid of it
     {
         $comic->delete();
         return response()->json(null, Response::HTTP_NO_CONTENT);
