@@ -13,6 +13,200 @@
         "version": "2.0.0"
     },
     "paths": {
+        "/api/authors": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "description": "Displays all the authors",
+                "operationId": "0c71439e213e1b284fc37995d74bca2b",
+                "responses": {
+                    "200": {
+                        "description": "Task failed unsuccessfully, Returns a list of all the authors in JSON format"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/comics": {
+            "get": {
+                "tags": [
+                    "Comics"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Displays all the comics",
+                "operationId": "98dc4ed0037dc558691bd498614669ec",
+                "responses": {
+                    "200": {
+                        "description": "Task failed unsuccessfully, Returns a list of Comics in a JSON format"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Comics"
+                ],
+                "summary": "Create a new Comic",
+                "description": "Stores the comic in the DB",
+                "operationId": "store",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "genre",
+                                    "author",
+                                    "illustrator",
+                                    "issues"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Sample Title"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Interesting bit of text"
+                                    },
+                                    "genre": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "The category of literature"
+                                    },
+                                    "author": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Person"
+                                    },
+                                    "illustrator": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Person"
+                                    },
+                                    "issues": {
+                                        "type": "integer",
+                                        "format": "integer",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/comics/{id}": {
+            "get": {
+                "tags": [
+                    "Comics"
+                ],
+                "summary": "Display the specified comic by said ID.",
+                "description": "Gets a comic by ID",
+                "operationId": "085385974afa441ba0353a39920c391f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comic id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful task"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/comic/{id}": {
+            "delete": {
+                "tags": [
+                    "Comics"
+                ],
+                "summary": "Delete a Comic",
+                "description": "Delete Comic",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of a Comic",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": "204"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/": {
             "get": {
                 "description": "HomePage",
