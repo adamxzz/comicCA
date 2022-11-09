@@ -11,4 +11,9 @@ class Comic extends Model
     use HasFactory;
     protected $fillable = ['title','description','genre','author','illustrator','issues'];
     //protected by $guarded = [];
+
+    public function distributor()
+    {
+        return $this->belongsTo(Distributor::class);
+    }
 }
