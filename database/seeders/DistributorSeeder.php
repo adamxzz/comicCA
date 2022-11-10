@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Distributors;
+use App\Models\Distributor;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +15,9 @@ class DistributorSeeder extends Seeder
      */
     public function run()
     {
-        Distributor::factory()
-        ->times(4)
-        ->hasComics(5)
-        ->create();
+       Distributor::factory()
+       ->times(3)
+       ->hasBooks(4)
+       ->create();
     }
 }
