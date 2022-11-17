@@ -12,7 +12,7 @@ class Distributor extends Model
 
     // returns the distributors comics
     // distributors -> comics
-    public function books()
+    public function comics()
     {
         return $this->hasMany(Comic::class);
     }

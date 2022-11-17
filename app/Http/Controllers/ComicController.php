@@ -36,7 +36,7 @@ class ComicController extends Controller
     public function index()
     {
         //gets all of the comics from the JSON file
-        return new ComicCollection(Comic::all());
+        return new ComicCollection(Comic::with('distributor')->get());
     }
 
     /**
@@ -76,7 +76,7 @@ class ComicController extends Controller
     //this fumction stores the comic by asking prompts that need to be filled in order to get stored
     {
         $comic = comic ::create($request->only([
-            'title','description','genre','author','illustrator','issues'
+            'title','description','genre','author','illustrator','issues','distributor_id'
         ]));
 
         return new ComicResource($comic);
@@ -132,7 +132,7 @@ class ComicController extends Controller
     //the PATCH method is for when you only need to send the data you're updating, but not the whole resource.  
     {
         $comic->update($request->only([
-            'title','description','genre','author','illustrator','issues'
+            'title','description','genre','author','illustrator','issues','distributor_id'
         ]));
 
         return new ComicResource($comic);

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComicController;
+use App\Http\Controllers\DistributorController;
 use App\Http\Controllers\AuthorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('/comics',ComicController::class);
+Route::apiResource('/distributors',DistributorController::class);
+
 
 Route::resource('/authors', AuthorController::class)->only(['index', 'show']);

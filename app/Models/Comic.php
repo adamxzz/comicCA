@@ -9,7 +9,7 @@ class Comic extends Model
 //comic model class handles all the data used in a web application
 {
     use HasFactory;
-    protected $fillable = ['title','description','genre','author','illustrator','issues'];
+    protected $fillable = ['title','description','genre','author','illustrator','issues', 'distributor_id'];
     //protected by $guarded = [];
 
     public function distributor()

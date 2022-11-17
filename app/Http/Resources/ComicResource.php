@@ -24,6 +24,9 @@ class ComicResource extends JsonResource
             'author' => $this->author,
             'illustrator' => $this->illustrator,
             'issues' => $this->issues,
+            'distributor_id' => $this->distributor->id,
+            'distributor_name' => $this->distributor->name,
+            'distributor_biograpghy' => $this->distributor->biography
         ];
     }
 }

@@ -17,7 +17,7 @@ class DistributorSeeder extends Seeder
     {
        Distributor::factory()
        ->times(3)
-       ->hasBooks(4)
+       ->hasComics(4)
        ->create();
     }
 }
