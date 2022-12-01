@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Distributor;
 use Illuminate\Http\Request;
 use App\Http\Resources\DistributorCollection;
-
+use App\Http\Resources\DistributorResource;
+use App\Http\Requests\StoreDistributorRequest;
+use App\Http\Requests\UpdateDistributorRequest;
 
 class DistributorController extends Controller
 {
@@ -23,12 +25,17 @@ class DistributorController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\StoreDistributorRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreDistributorRequest $request)
     {
-        //
+        $distributor = Distributor::create([
+            'name' => $request->name,
+            'biography' => $request->biography
+        ]);
+
+        return new DistributorResource($distributor);
     }
 
     /**
@@ -39,7 +46,7 @@ class DistributorController extends Controller
      */
     public function show(Distributor $distributor)
     {
-        //
+        return new DistributorResource($distributor);
     }
 
     /**
@@ -49,9 +56,9 @@ class DistributorController extends Controller
      * @param  \App\Models\Distributor  $distributor
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Distributor $distributor)
+    public function update(UpdateDistributorRequest $request, Distributor $distributor)
     {
-        //
+        $distributor->update($request->all());
     }
 
     /**
@@ -62,6 +69,6 @@ class DistributorController extends Controller
      */
     public function destroy(Distributor $distributor)
     {
-        //
+        $distributor->delete();
     }
 }
