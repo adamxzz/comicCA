@@ -36,7 +36,9 @@ class ComicController extends Controller
     public function index()
     {
         //gets all of the comics from the JSON file
-        return new ComicCollection(Comic::with('distributor')->get());
+        return new ComicCollection(Comic::with('distributor')
+        ->with('authors')
+        ->get());
     }
 
     /**
@@ -44,7 +46,7 @@ class ComicController extends Controller
      *
      * @OA\Post(
      *      path="/api/comics",
-     *      operationId="store",
+     *      operationId="store comic",
      *      tags={"Comics"},
      *      summary="Create a new Comic",
      *      description="Stores the comic in the DB",
@@ -121,7 +123,31 @@ class ComicController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
+     * @OA\Put(
+    *     path="/api/comics/{id}",
+    *     description="Updates a comic by ID",
+    *     tags={"Comics"},
+    *          @OA\Parameter(
+        *          name="id",
+        *          description="Comic id",
+        *          required=true,
+        *          in="path",
+        *          @OA\Schema(
+        *              type="integer")
+     *          ),
+        *      @OA\Response(
+        *          response=200,
+        *          description="Successful task"
+        *       ),
+        *      @OA\Response(
+        *          response=401,
+        *          description="Unauthenticated",
+        *      ),
+        *      @OA\Response(
+        *          response=403,
+        *          description="Forbidden"
+        *      )
+        * )
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Comic  $comic
      * @return \Illuminate\Http\Response

@@ -16,4 +16,9 @@ class Comic extends Model
     {
         return $this->belongsTo(Distributor::class);
     }
+
+    public function authors()
+    {
+        return $this->belongsToMany(Author::class)->withTimestamps();
+    }
 }

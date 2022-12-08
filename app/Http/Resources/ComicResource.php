@@ -16,17 +16,23 @@ class ComicResource extends JsonResource
      */
     public function toArray($request)
     {
+        $authors = array();
+        foreach ($this->authors as $author){
+            array_push($authors, $author->name);
+        }
+
         return[
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->description,
             'genre' => $this->genre,
-            'author' => $this->author,
+            // 'author' => $this->author,
             'illustrator' => $this->illustrator,
             'issues' => $this->issues,
             'distributor_id' => $this->distributor->id,
             'distributor_name' => $this->distributor->name,
-            'distributor_biograpghy' => $this->distributor->biography
+            'distributor_biograpghy' => $this->distributor->biography,
+            'authors' => $authors
         ];
     }
 }

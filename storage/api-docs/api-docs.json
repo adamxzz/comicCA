@@ -59,7 +59,7 @@
                 ],
                 "summary": "Create a new Comic",
                 "description": "Stores the comic in the DB",
-                "operationId": "store",
+                "operationId": "store comic",
                 "requestBody": {
                     "required": true,
                     "content": {
@@ -138,9 +138,39 @@
                 "tags": [
                     "Comics"
                 ],
-                "summary": "Display the specified comic by said ID.",
+                "summary": "Displays the specified comic by said ID.",
                 "description": "Gets a comic by ID",
                 "operationId": "085385974afa441ba0353a39920c391f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comic id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful task"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Comics"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Updates a comic by ID",
+                "operationId": "419e4eeae71cb4714e6e43595b70976b",
                 "parameters": [
                     {
                         "name": "id",
@@ -207,12 +237,182 @@
                 }
             }
         },
-        "/": {
+        "/api/distributor": {
             "get": {
-                "description": "HomePage",
+                "tags": [
+                    "Distributors"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Displays all the distributors",
+                "operationId": "91b717ff23cef497db5da7bc474aa3c8",
                 "responses": {
-                    "default": {
-                        "description": "Welcome page"
+                    "200": {
+                        "description": "Task failed unsuccessfully, Returns a list of distributors in a JSON format"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Distributors"
+                ],
+                "summary": "Create a new Distributor",
+                "description": "Stores the distributor in the DB",
+                "operationId": "store distributor",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "biography"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Sample Name"
+                                    },
+                                    "biography": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Bit of text for the biography"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/distributors/{id}": {
+            "get": {
+                "tags": [
+                    "Distributors"
+                ],
+                "summary": "Displays the specified distributor by said ID.",
+                "description": "Gets a distributors by ID",
+                "operationId": "d67e88a587be2a4b46bf8ccab6d243bd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Distributor id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful task"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/distributor/{id}": {
+            "put": {
+                "tags": [
+                    "Distributors"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Updates a distributor by ID",
+                "operationId": "26d1327a3ee739cc6667711e31e10d27",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Comic id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful task"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Distributors"
+                ],
+                "summary": "Delete a Distributor",
+                "description": "Delete Distributor",
+                "operationId": "delete ",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of a Distributor",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": "204"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
