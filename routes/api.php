@@ -23,6 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('/comics',ComicController::class);
 Route::apiResource('/distributors',DistributorController::class);
+Route::apiResource('/authors',AuthorController::class);
 
 
-Route::resource('/authors', AuthorController::class)->only(['index', 'show']);
+
+// Route::resource('/authors', AuthorController::class)->only(['index', 'show']);

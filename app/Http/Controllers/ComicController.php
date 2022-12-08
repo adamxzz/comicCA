@@ -123,7 +123,7 @@ class ComicController extends Controller
 
     /**
      * Update the specified resource in storage.
-     * @OA\Put(
+     * @OA\Post(
     *     path="/api/comics/{id}",
     *     description="Updates a comic by ID",
     *     tags={"Comics"},

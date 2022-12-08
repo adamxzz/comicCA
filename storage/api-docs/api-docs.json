@@ -18,6 +18,7 @@
                 "tags": [
                     "Authors"
                 ],
+                "summary": "Display a listing of the resource.",
                 "description": "Displays all the authors",
                 "operationId": "0c71439e213e1b284fc37995d74bca2b",
                 "responses": {
@@ -29,6 +30,176 @@
                     },
                     "403": {
                         "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/author": {
+            "post": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Create a new Author",
+                "description": "Stores the author in the DB",
+                "operationId": "store author",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "genre",
+                                    "author",
+                                    "illustrator",
+                                    "issues"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Sample Name"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "Address of the Author"
+                                    },
+                                    "bio": {
+                                        "type": "string",
+                                        "format": "string",
+                                        "example": "The biography of the author"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "integer",
+                                            "example": ""
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/authors/{id}": {
+            "get": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Displays the specified author by said ID.",
+                "description": "Gets a authors by ID",
+                "operationId": "c14c739d68f46a33acfd0694a12c27dc",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Author id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful task"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/api/author/{id}": {
+            "put": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Updates a Author by ID",
+                "operationId": "95f3dc321fe15b0c7f6f4984f80c9b9c",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Author id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful task"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Authors"
+                ],
+                "summary": "Delete a Author",
+                "description": "Delete Author",
+                "operationId": "delete author",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Id of a Author",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status_code": {
+                                            "type": "integer",
+                                            "example": "204"
+                                        },
+                                        "data": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -164,13 +335,13 @@
                     }
                 }
             },
-            "put": {
+            "post": {
                 "tags": [
                     "Comics"
                 ],
                 "summary": "Update the specified resource in storage.",
                 "description": "Updates a comic by ID",
-                "operationId": "419e4eeae71cb4714e6e43595b70976b",
+                "operationId": "44f276d6148d41d33a52681a8d27579e",
                 "parameters": [
                     {
                         "name": "id",
